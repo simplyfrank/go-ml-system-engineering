@@ -43,7 +43,7 @@ can take a set of predefined values ['running', 'stopped', 'pausing', 'restartin
 			fmt.Println("Entered an out of list value.")
 		}
 		fmt.Println("-------------------------------")
-	}t
+	}
 
 }
 
