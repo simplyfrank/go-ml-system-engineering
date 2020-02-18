@@ -7,11 +7,10 @@ Status: In development
 
 ### Challenges:
 1. Data Loading
-1.1 Loading from file
-1.2 Loading from DB
-1.3 Loading from Streaming sources
-2. Data Transformation2
-2.1 ....
+    1. Loading from File
+    2. Loading from DB
+    3. Loading from Stream
+2. Data Transformation
 3. Data Ingestion
 4. Data Storage
 
