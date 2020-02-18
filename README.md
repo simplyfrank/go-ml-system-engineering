@@ -27,4 +27,9 @@ Please do feel free to reach out to me about any questions.
 #### Data Engineering challenges 
  
 #### Motivation for building with go
+
 [Go engineering for ML systems @Cortex](https://towardsdatascience.com/why-were-writing-machine-learning-infrastructure-in-go-not-python-38d6a37e2d76) 
+
+#### Data Engineering Tooling
+[awesome data engineering](https://github.com/igorbarinov/awesome-data-engineering) Curated list of links to popular
+toolsets for data engineering projects
