@@ -33,3 +33,7 @@ Please do feel free to reach out to me about any questions.
 #### Data Engineering Tooling
 [awesome data engineering](https://github.com/igorbarinov/awesome-data-engineering) Curated list of links to popular
 toolsets for data engineering projects
+#### Podcasts
+[dataengineeringpodcast](https://www.dataengineeringpodcast.com/)
+#### Community
+[GopherData](https://github.com/gopherdata) Bringing together users and developers of Go data management, processing, analytics, and visualization tools. 
