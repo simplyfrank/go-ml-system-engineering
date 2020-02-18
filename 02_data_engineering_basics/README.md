@@ -6,7 +6,7 @@ solutions to them.
 Status: In development
 
 ### Challenges:
-1. [Data Loading](https://github.com/SkillSmart/ml-system-engineering-with-go/tree/master/02_data_engineering_basics)
+1. [Data Loading](https://github.com/SkillSmart/ml-system-engineering-with-go/tree/master/02_data_engineering_basics/01_loading)
     1. Loading from File
     2. Loading from DB
     3. Loading from Stream
