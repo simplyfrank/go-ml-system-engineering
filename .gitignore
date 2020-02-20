@@ -1,5 +1,6 @@
 # Folders to excempt
 data
+data/*
 tmp
 .idea
 
