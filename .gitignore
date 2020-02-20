@@ -1,8 +1,8 @@
 # Folders to excempt
-data
+data/
 data/*
-tmp
-.idea
+tmp/
+.idea/
 
 # Data types to excempt
 .zip
