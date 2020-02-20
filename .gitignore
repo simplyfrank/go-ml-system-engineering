@@ -7,4 +7,4 @@ tmp/
 # Data types to excempt
 .zip
 .tmp
-
+.exe
