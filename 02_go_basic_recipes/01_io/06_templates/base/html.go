@@ -8,27 +8,28 @@ import (
 
 
 const sampleTemplate = `
-	This template demonstrates printing a {{ .Variable | printf "%#v""}}  
-	{{if condition}}
-	If condition is set, we'll print this
-	{{else}}
-	We will print this instead if condition is not set
+	{{ .Variable | printf "%#v" }}
 
-	Next we'll iterate over an array of strings:
-	{{ range $index, $item := split .Words ","}}
-	{{$index}}: {{$item}}
+	{{ if .Condition }}
+	If condition is set this prints
+	{{ else }}
+	If condition is not set this prints
+	{{ end }}
+	
+	This iterates over an array of items:
+	{{ range $idx, $val := .Items }}
+	{{ $idx }}: {{$val}}
+	{{ end }}
+
+	We can easily import other function like string.Split
+	{{ range $idx, $item := split .Words "," }}
+	{{$idx}}: {{$item}}
 	{{end}}
 
-	Blocks are a way to embed templates ino one another
- 	{{block "block_example" .}}
-	No block defined!
+	Blocks are here for code reuse
+	{{block "block_example" .}}
+	No Block defined
 	{{end}}
-
-
-	{{/*
-	This is a way to insert
-	a multi line comment in a template
-	*/}}
 `
 
 const secondTemplate = `
@@ -63,10 +64,17 @@ func RunTemplate() error {
 
 	// We coudl use Must instead to panic on error
 	// template.Must(t.Parse
-	template.Must(t.Parse(sampleTemplate))
+	t, err:= t.Parse(sampleTemplate)
+	if err != nil { return err }
+
+	t2, err := t.Clone()
+	if err != nil { return err}
+
+	t2, err = t2.Parse(secondTemplate)
+	if err != nil { return err}
 
 	// Write the template to stdout and populate it with data
-	if err := t.Execute(os.Stdout, &data); err != nil {
+	if err := t2.Execute(os.Stdout, &data); err != nil {
 		return err
 	}
 

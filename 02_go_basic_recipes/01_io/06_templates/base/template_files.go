@@ -7,7 +7,7 @@ import (
 	"text/template"
 )
 
-// Create TEamplate will create a template file that contains data
+// Create Template will create a template file that contains data
 func CreateTemplate(path string, data string) error {
 	return ioutil.WriteFile(path, []byte(data), os.FileMode(0755))
 }
@@ -30,7 +30,7 @@ func InitTemplates() error {
 
 	err = CreateTemplate(filepath.Join(tempdir, "t2.tmpl"),
 		`
-	{{ define "templat2"}}Template 2! {{ .Var2 }}{{end}}
+	{{ define "template2"}}Template 2! {{ .Var2 }}{{end}}
 	`)
 	if err != nil {
 		return err

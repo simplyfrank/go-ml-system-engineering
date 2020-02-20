@@ -21,9 +21,11 @@ func HTMLDifferences() error {
 	if err != nil { return err }
 
 	// you can also manually call the escapers
-	fmt.Println(template.JSEscaper(`example<example@example.com>`))
-	fmt.Println(template.HTMLEscaper(`example <example@example.com>`))
-	fmt.Println(template.URLQueryEscaper(`example <example@example.com`))
+	var input string = "example <example@example.com>"
+	fmt.Printf("\n\nManually Escaping inputs '%s':\n\n", input)
+	fmt.Println("JSEscaper: \t\t\t",template.JSEscaper(input))
+	fmt.Println("HTMLEscaper: \t\t",template.HTMLEscaper(input))
+	fmt.Println("URLQueryEscaper: \t",template.URLQueryEscaper(input))
 
 	return nil
 }
