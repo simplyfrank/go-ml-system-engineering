@@ -9,5 +9,5 @@ PipeReader and PipeWriter structures implement the io.Reader and io.Writer inte
 in-memory pipe. The primary purpose of a pipe is to read from a stream while simultaneously writing from the same stream 
 to a different source. In essence, it combines the two streams into a pipe.Go interfaces are a clean abstraction to wrap 
 data that performs common operations. This is made apparent when doing I/O operations, and so the io package is a great 
-resource for learning about interface composition. The pipe package is often underused, but provides great flexibility 
+resource for ing about interface composition. The pipe package is often underused, but provides great flexibility 
 with thread safety when linking input and output streams.
