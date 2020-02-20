@@ -1,0 +1,7 @@
+If you're familiar with files in Unix, the Go os library should feel very familiar. You can perform basically all common operations—Stat a file to collect attributes, collect a file with different permissions, and create and modify directories and files. In this recipe, we performed a number of manipulations to directories and files and then cleaned up after ourselves.
+
+Working with file objects is very similar to working with in-memory streams. Files also provide a number of convenience functions directly, such as Chown, Stat, and Truncate. The easiest way to get comfortable with files is to make use of them. In all the previous recipes, we have to be careful to clean up after our programs.
+
+Working with files is a very common operation when building backend applications. Files can be used for configuration, secret keys, as temporary storage, and more. Go wraps OS system calls using the os package and allows the same functions to operate regardless of whether you're using Windows or Unix.
+
+Once your file is opened and stored in a File structure, it can easily be passed into a number of interfaces (we discussed these interfaces earlier). All the earlier examples can use os.File structures directly instead of buffers and in-memory data streams in order to operate on data stored on the disk . This may be useful for certain techniques, such as writing all logs to stderr and the file at the same time with a single write call
