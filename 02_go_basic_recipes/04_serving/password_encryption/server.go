@@ -26,7 +26,6 @@ func init() {
 func main() {
 	// Set the handler routes
 	http.HandleFunc("/", baseHandler)
-	http.HandleFunc("/signup/success", loginResultHandler)
 	http.HandleFunc("/signup", signupHandler)
 	http.HandleFunc("/login", loginHandler)
 	http.HandleFunc("/logout", logoutHandler)

@@ -21,17 +21,21 @@ var tmpData struct {
 func baseHandler(w http.ResponseWriter, req *http.Request) {
 
 	us, ok := getUserFromSession(req)
-
+	sID := getSession(req)
 	var dat interface{}
 	if ok {
 		dat = struct{
 				User user
 				Users map[string]user
-				Req http.Request
+				Sessions map[uuid.UUID]string
+				Req *http.Request
+				SessionID string
 			}{
 			us,
 			dbUsers,
-			*req,
+			dbSessions,
+			req,
+			sID.String(),
 			}
 		}
 	tpl.ExecuteTemplate(w, "index.gohtml", dat)
@@ -60,39 +64,14 @@ func signupHandler(w http.ResponseWriter, req *http.Request) {
 		log.Printf("User Registration returned with : %v\nstatus: %v", currUser, ok)
 		if !ok {
 			log.Print("User registration failed. Redirecting")
-			//http.Redirect(w, req, "/signup", http.StatusSeeOther)
+			http.Redirect(w, req, "/signup", http.StatusSeeOther)
 		}
 
 		// Associate user with new session
 		sID := logIn(w, currUser.UserName)
 		log.Printf("Successfully registered a new session:\nSession ID:%v\nUser:%v", sID, currUser)
-		http.Redirect(w, req, "/signup/success", 302)
+		http.Redirect(w, req, "/", 302)
 	}
-}
-
-func loginResultHandler(w http.ResponseWriter, req *http.Request) {
-	// Ensure only authenticated users can reach the page
-	requireAuth(w, req)
-
-	// Display the result of the registration metrics
-	log.Printf("Preparing success page after login -> Getting user")
-	currUser, ok := getUserFromSession(req)
-	if !ok {
-		log.Print("Unable to retrieve current user from session")
-	}
-	sID := getSession(req)
-	if !ok {log.Print("Unable to get session from cookie")}
-
-	_, _ = currUser, sID
-	// Display the results on a sepearate success page for confirmation
-	log.Print("Executing template success.gohtml")
-	tpl.ExecuteTemplate(w, "success.gohtml", struct{
-		session string
-		user user
-	}{
-		sID.String(),
-		currUser,
-	})
 }
 
 
@@ -125,7 +104,7 @@ func loginHandler(w http.ResponseWriter, req *http.Request) {
 func logoutHandler(w http.ResponseWriter, req *http.Request) {
 	// Log out the user from the system
 	if logOut(w, req) {
-		io.WriteString(w, "You have been successfully logged out")
+		http.Redirect(w, req, "/", http.StatusSeeOther)
 	} else {
 		io.WriteString(w, "We were unable to log you out. Please try again")
 	}
