@@ -64,7 +64,7 @@ func ReadMovieDataFromCSV(b io.Reader) ([]Movie, error) {
 		}
 
 		// Create movie value from parsed line
-		m := Movies{record[0], record[1], int(year)}
+		m := Movie{record[0], record[1], int(year)}
 		movies = append(movies, m)
 
 	}

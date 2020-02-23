@@ -3,8 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
-
-	interfaces "github.com/SkillSmart/go/02_go_basic_recipes/01_io/interfaces"
+	"github.com/SkillSmart/go/02_go_basic_recipes/01_io/interfaces"
 )
 
 func main() {

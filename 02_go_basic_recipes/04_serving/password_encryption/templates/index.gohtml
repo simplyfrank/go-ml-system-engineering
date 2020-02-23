@@ -1,0 +1,24 @@
+{{ template "header.gohtml" }}
+{{ template "navMain.gohtml" }}
+
+    <h3>Welcome to the MAIN PAGE</h3>
+    {{ if . }}
+        You have passed data
+        {{ if .Users }}
+            <h4>Currently registered users</h4>
+                <ul>
+                    {{ range .Users}}
+                    <li>{{.}}</li>
+                    {{ end }}
+                </ul>
+        {{ end }}
+        {{ if .User }}
+            <h4>User data</h4>
+            {{ .User }}
+        {{ end }}
+        {{ if .Req }}
+            <h4>Request information</h4>
+                {{ .Req }}
+        {{ end }}
+    {{ end }}
+{{ template "footer.gohtml" }}

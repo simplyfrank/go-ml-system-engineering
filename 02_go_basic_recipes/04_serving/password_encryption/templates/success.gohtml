@@ -1,0 +1,21 @@
+{{ template "header.gohtml"}}
+    {{ if .session }}
+    <h2>Success! You have been registered with us</h2>
+    <p>Your current session is {{.session}}</p>
+    <table style="width: 100%">
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+        </tr>
+        <tr>
+        {{ range .user }}
+            <td>{{.}}</td>
+            {{ end }}
+        </tr>
+    </table>
+    {{ else }}
+    <h3>You have not yet been registered. Please go and visit /signup</h3>
+    {{ end }}
+{{ template "footer.gohtml" }}

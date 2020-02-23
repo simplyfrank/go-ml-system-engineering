@@ -1,0 +1,16 @@
+{{ template "header.gohtml" }}
+<div>
+    <h4>This part is from the signup page</h4>
+    <form method="post">
+        <label for="uname">User name</label>
+        <input type="text" id="uname" name="username"/>
+        <label for="pword">Password</label>
+        <input type="password" id="pword" name="password"/>
+        <label for="fname">First name</label>
+        <input type="text" id="fname" name="firstname">
+        <label for="lname">Last name</label>
+        <input type="text" id="lname" name="lastname">
+        <input type="submit"/>
+    </form>
+</div>
+{{ template "footer.gohtml" }}

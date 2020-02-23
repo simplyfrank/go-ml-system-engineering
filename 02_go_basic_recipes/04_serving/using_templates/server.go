@@ -33,6 +33,7 @@ func main() {
 	http.HandleFunc("/about", aboutHandler)
 
 	// Start the server
+	fmt.Println("Starting server. Listening on port 8080")
 	http.ListenAndServe(":8080", nil)
 }
 

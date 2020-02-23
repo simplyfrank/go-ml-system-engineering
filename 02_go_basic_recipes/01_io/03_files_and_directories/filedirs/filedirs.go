@@ -38,7 +38,7 @@ func main() {
 	// --->>
 	//Validate all bytes have been written successfully
 	if count != len(value) {
-		fmt.Println(errors.New("incorrect length returned from write")
+		fmt.Println(errors.New("incorrect length returned from write"))
 	}
 
 	// ------>>

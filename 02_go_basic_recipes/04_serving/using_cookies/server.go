@@ -11,12 +11,13 @@ func main() {
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 
 	http.ListenAndServe(":8080", nil)
+
 }
 
 func setHandler(w http.ResponseWriter, req *http.Request) {
 	http.SetCookie(w, &http.Cookie{
 		Name: "my-cookie",
-		Value: "some value set",
+		Value: "testing",
 	})
 	fmt.Fprintf(w, "Cookie written. Check your browsers cache")
 	fmt.Fprintln(w, "In Chrome go to dev tools / application / cookies")
