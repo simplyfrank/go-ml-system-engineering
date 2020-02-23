@@ -1,8 +1,9 @@
 # Folders to excempt
 data/
-data/*
+data/*git
 tmp/
 .idea/
+pkg/
 
 # Data types to excempt
 .zip
