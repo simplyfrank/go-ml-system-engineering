@@ -1,4 +1,4 @@
-#Authentication with encrypted passwords
+# Authentication with encrypted passwords
 
 This represents a simple implementation of a custom
 authentication system you can play around with. 
@@ -10,7 +10,7 @@ Functional reqs:
 * A login will allow a registered user to easily get a new session assigned
 * An existing user is not allowed to register another account
 
-###Technical implementation:
+### Technical implementation:
 For this example i focussed on a simple layout to keep the focus on the interaction of 
 the individual components along a classical authentication workflow.
 
