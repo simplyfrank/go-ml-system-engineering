@@ -2,8 +2,19 @@ package logger
 
 import (
 	"LearnGoProject/03_applications/01_codeOrg/modules/config"
+	"fmt"
 	logpk "log"
 )
+
+// Logger are passed as configuration settings into the global loggingConfig
+// value, and can be passed to individual functions to overwrite global settings
+// for the local case.
+type Logger interface {
+}
+
+
+
+
 // ---- Logging Functionalities -------->
 // log switches on the set config.LogLevel to ensure the right type of logging procedure
 // is used
@@ -50,6 +61,33 @@ func log(logFunc func(), level config.LogLevel) {
 		}
 	}
 }
+
+// Ensure
+func loggerDefault(logger Logger) {
+	switch logger.(type) {
+	case WebLogger:
+		if (WebLogger{}) == logger {
+			// Check if it an empty WebLogger value
+			// Then set its defaults
+		}
+		fmt.Println("It's a weblogger type")
+	case FileLogger:
+		if (FileLogger{}) == logger {
+
+		}
+	case DBLogger:
+		if (DBLogger{}) == logger {
+
+		}
+	case APILogger:
+		if (APILogger{}) == logger {
+
+		}
+	default:
+
+	}
+}
+
 
 // ----------- CONVENIENCE LOGGERS --------->>>>
 // Functions are high level abstractions to quickyl set up a meaningful logging system

@@ -5,21 +5,26 @@ import (
 	//"LearnGoProject/03_applications/01_codeOrg/modules/config/db"
 
 	"LearnGoProject/03_applications/01_codeOrg/controllers/front"
+	"LearnGoProject/03_applications/01_codeOrg/modules/config"
 	"database/sql"
-	"html/template"
 	"net/http"
 )
 
 // Set global variables for the program
 var dbSQL, dbMongo *sql.DB
-var Tpl *template.Template
 
 func init() {
-	// Configure the packages through the config package API
-	//config.LoggingConfig.SetLogstring("%s:%s")
-	//config.LoggingConfig.SetLogLevel(config.LogLevels.Debug)
 
-	//
+	// Intialize the configuration variables
+	Cfg := config.NewConfig()
+	Cfg.ParseConfigfile("config.yaml")
+	Cfg.ParseEnvVars()
+
+	// Configure the packages through the config package API
+	LogConfig := config.NewLogConfig()
+	LogConfig.SetLogString("%s:%s")
+	LogConfig.SetLogLevel(config.LogLevels.Debug)
+
 	////// Instantiate the database connection by passing the appropriate Connector value
 	////dbSQL = check.DBConnect(db.NewSQL("mysql", &db.MySQLConnector{
 	////	// Working with nested types we need to manually instantiate the

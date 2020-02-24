@@ -51,6 +51,17 @@ func init() {
 		//logger.LogUnsetVariable("Logging", "*loggingConfig", "")
 	}
 }
+
+// Instantiate and prepopulate a loggingConfig value
+// to return to the caller.
+func NewLogConfig() *loggingConfig {
+	return &loggingConfig{
+		logLevel:  LogLevels.Debug,
+		logString: "%s:%s",
+	}
+}
+
+
 // Provide the setter interface
 func (l *loggingConfig) Configure(key string, value interface{}) (ok bool) {
 	//switch key {
@@ -74,7 +85,7 @@ func (l *loggingConfig) SetLogLevel(level LogLevel) {
 	// Set the appropriate level
 	l.logLevel = level
 }
-func (l *loggingConfig) SetLogstring(formatstring string) {
+func (l *loggingConfig) SetLogString(formatstring string) {
 	// Check the formatstring accepts the right number of elements
 	// Set the format string
 	l.logString = formatstring

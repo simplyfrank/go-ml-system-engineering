@@ -12,9 +12,11 @@ func (e *errorConfig) Configure(key string, value interface{}) (ok bool) {
 	return true
 }
 
+
 func init() {
 	// Instantiate the necessary variables for the module here
 	// Set default error handling configuration
+
 }
 
 
