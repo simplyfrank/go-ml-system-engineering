@@ -106,7 +106,7 @@ func logoutHandler(w http.ResponseWriter, req *http.Request) {
 	if logOut(w, req) {
 		http.Redirect(w, req, "/", http.StatusSeeOther)
 	} else {
-		io.WriteString(w, "We were unable to log you out. Please try again")
+		io.WriteString(w, "We were unable to logger you out. Please try again")
 	}
 }
 
