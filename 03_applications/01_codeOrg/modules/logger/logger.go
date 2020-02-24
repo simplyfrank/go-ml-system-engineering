@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"LearnGoProject/03_applications/01_codeOrg/config"
+	"LearnGoProject/03_applications/01_codeOrg/modules/config"
 	logpk "log"
 )
 // ---- Logging Functionalities -------->
@@ -51,17 +51,8 @@ func log(logFunc func(), level config.LogLevel) {
 	}
 }
 
-// Log functions will be defined for common usecases, and can then be imported and used
-// while relying on the automatic handling based on their current
-
-func LogError(err error, callFunc string, task string) {
-	// define the logging function as an anonymous function to be passed
-	logFn := func() {
-		logpk.Printf("%s:: Unable to %s:: %s", callFunc, task, err)
-	}
-	// Pass the function along with its level of severity
-	log(logFn, config.LogLevels.Error)
-}
+// ----------- CONVENIENCE LOGGERS --------->>>>
+// Functions are high level abstractions to quickyl set up a meaningful logging system
 
 // LogUnsetValue logs an event where a value that is required to have been set was found uninitiated.
 func LogUnsetValue(value interface{}, fn interface{}, msg string ) {
@@ -72,3 +63,24 @@ func LogUnsetValue(value interface{}, fn interface{}, msg string ) {
 	// Pass the function along with its level of severity
 	log(logFn, config.LogLevels.Warn)
 }
+
+// ----------- CUSTOM LOGGING ------------>>>>
+// Following functions enable a customized logging behaviour at a low level. Internally
+// used to implement convenience loggers in the package. Do not alter their API !!
+
+func LogError(err error, level config.LogLevel, callFunc string, task string) {
+	// define the logging function as an anonymous function to be passed
+	logFn := func() {
+		logpk.Printf("%s:: Unable to %s:: %s", callFunc, task, err)
+	}
+	// Pass the function along with its level of severity
+	log(logFn, config.LogLevels.Error)
+}
+
+func LogFatal(err error, callFunc string, task string) {
+	logFn := func() {
+		logpk.Fatalf("%s:: Unable to %s:: %s", callFunc, task, err)
+	}
+	log(logFn, config.LogLevels.Fatal)
+}
+
