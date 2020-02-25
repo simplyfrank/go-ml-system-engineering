@@ -33,7 +33,7 @@ func main() {
 	http.HandleFunc("/:name/", nameHandler)
 
 	// WE can use the shorthand way to set a server
-	//log.Fatal(http.ListenAndServe(":8080", nil))
+	//logger.Fatal(http.ListenAndServe(":8080", nil))
 
 	// Or create a custom server value
 	s := &http.Server{

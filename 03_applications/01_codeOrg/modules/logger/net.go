@@ -14,10 +14,10 @@ import "net/http"
 type WebLogger struct {
 	// Define all relevant metrics to log
 	// Some values can be flags
-	LogIP bool // Extract and log the ip of the requestor
-	LogLoc bool // Extract and log the location of the request
-	LogCookie bool // Log the state of all registered cookies
-	LogMethod bool // Log the method of the request
+	LogIP        bool // Extract and log the ip of the requestor
+	LogLoc       bool // Extract and log the location of the request
+	LogCookie    bool // Log the state of all registered cookies
+	LogMethod    bool // Log the method of the request
 	LogEncrypted bool // Encrypt information before writing to log
 }
 type FileLogger struct {
@@ -25,11 +25,9 @@ type FileLogger struct {
 }
 
 type DBLogger struct {
-
 }
 
 type APILogger struct {
-
 }
 
 func LogRequest(req *http.Request, *WebLogger) {

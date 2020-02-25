@@ -4,8 +4,12 @@ data/*git
 tmp/
 .idea/
 pkg/
+config/
+/02_go_basic_recipes/04_serving/password_encryption/pkg/
 
 # Data types to excempt
 .zip
 .tmp
 .exe
+/pkg/
+config.yaml
