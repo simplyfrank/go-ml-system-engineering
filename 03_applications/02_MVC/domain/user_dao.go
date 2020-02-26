@@ -2,6 +2,7 @@ package domain
 
 import (
 	"LearnGoProject/03_applications/02_MVC/utils"
+	"fmt"
 	"net/http"
 )
 
@@ -28,7 +29,7 @@ func GetUser(userId uint64) (*User, *utils.ApplicationError) {
 		return user, nil
 	}
 	return nil, &utils.ApplicationError{
-		Message:    "user not found in system",
+		Message:    fmt.Sprintf("user %d does not exist", userId),
 		StatusCode: http.StatusNotFound,
 		Code:       "not_found",
 	}

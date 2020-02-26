@@ -8,8 +8,14 @@ import (
 	"strconv"
 )
 
+type userController struct {}
+
+var (
+	UserController userController
+)
+
 // GetUser retrieves a single user by userId
-func GetUser(w http.ResponseWriter, req *http.Request) {
+func (*userController) GetUser(w http.ResponseWriter, req *http.Request) {
 	// Check request
 	userId, err := strconv.ParseUint(req.URL.Query().Get("user_id"), 10, 64)
 	if err != nil {
@@ -25,7 +31,7 @@ func GetUser(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	user, apiErr := services.GetUser(userId)
+	user, apiErr := services.UserService.GetUser(userId)
 	if apiErr != nil {
 		// Serialize and send error
 		jsonValue, _ := json.Marshal(apiErr)
@@ -39,8 +45,8 @@ func GetUser(w http.ResponseWriter, req *http.Request) {
 }
 
 // Retrieve the full list of registered users
-func GetUsers(w http.ResponseWriter, req *http.Request) {
-	users, apiErr := services.GetUsers()
+func (*userController) GetUsers(w http.ResponseWriter, req *http.Request) {
+	users, apiErr := services.UserService.GetUsers()
 	if apiErr != nil {
 		// serialize and send error
 		jsonValue, _ := json.Marshal(apiErr)
