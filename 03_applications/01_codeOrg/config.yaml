@@ -1,0 +1,48 @@
+dev:
+  # Server configuration
+  server:
+    host: "localhost"
+    port: 8080
+
+  # User Database
+  mongodb:
+    user: "mongoadmin"
+    pass: "testpass"
+
+  # System Database
+  postgres:
+    user: "postgresadmin"
+    pass: "testpass"
+
+# Database configuration
+test:
+  server:
+    host: "localhost"
+    port: 8080
+
+  # User Database
+  mongodb:
+    user: "mongoadmin"
+    pass: "testpass"
+
+  # System Database
+  postgres:
+    user: "postgresadmin"
+    pass: "testpass"
+
+
+prod:
+  # Server configuration
+  server:
+    host: "localhost"
+    port: 80
+
+  # User Database
+  mongodb:
+    user: "mongoadmin"
+    pass: "testpass"
+
+  # System Database
+  postgres:
+    user: "postgresadmin"
+    pass: "testpass"
